@@ -24,7 +24,7 @@ const status = "success";
 
 //redirect to /me on root hit
 app.get("/", (req, res) => {
-	res.json({ message: "Server is running, visit /me for data" });
+	res.redirect("/me");
 });
 
 app.get("/me", async (req, res) => {
