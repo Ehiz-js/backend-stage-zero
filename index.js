@@ -47,6 +47,6 @@ app.get("/me", async (req, res) => {
 	}
 });
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
 	console.log(`Cat API running on http://localhost:${PORT}`);
 });
