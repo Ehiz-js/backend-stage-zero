@@ -27,23 +27,25 @@ app.get("/", (req, res) => {
 	res.redirect("/me");
 });
 
+//route to get cat fact
 app.get("/me", async (req, res) => {
+	//init variables cause of scope
+	const timestamp = new Date().toISOString();
+	let response = { status, user, timestamp };
+
+	//try catch for API requests
 	try {
 		const fact = (await axios.get(`${API_URL}`, { timeout: 5000 })).data.fact;
-		const timestamp = new Date().toISOString();
-		const response = {
-			status,
-			user,
-			timestamp,
+		//good response
+		response = {
+			...response,
 			fact,
 		};
 		res.json(response);
 	} catch (error) {
-		if (error.code === "ECONNABORTED") {
-			res.status(504).json({ message: "Request timed out" });
-		} else {
-			res.status(500).json({ message: error.message });
-		}
+		//bad response
+		response = { ...response, fact: error.message };
+		res.status(500).json(response);
 	}
 });
 
