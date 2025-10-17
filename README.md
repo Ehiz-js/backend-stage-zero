@@ -1,4 +1,4 @@
-# 🐱 Cat Facts API — Stage Zero Backend
+
 
 A simple **Express.js** backend that returns user information, the current timestamp, and a random cat fact fetched from an external API.
 
